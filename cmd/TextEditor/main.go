@@ -1,7 +1,7 @@
 package main
 
 import (
-	"image"
+	"image/color"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -22,9 +22,9 @@ func main() {
 	//create status bar
 	status := widget.NewLabel("Ln 1, Col 1")
 	appMenu := fyne.NewMenu("",
-		fyne.NewMenuItem("About notepadxp", func() {}),
+		fyne.NewMenuItem("About TextEditor", func() {}),
 		fyne.NewMenuItem("Preferences…", func() {}),
-		fyne.NewMenuItem("Quit", a.Quit))
+		fyne.NewMenuItem("Quit TextEditor", a.Quit))
 	fileMenu := fyne.NewMenu("File",
 		fyne.NewMenuItem("New", func() {}),
 		fyne.NewMenuItem("Open…", func() {}),
@@ -59,7 +59,7 @@ func main() {
 	menuItems := []*fyne.Menu{appMenu, fileMenu, editMenu, formatMenu, viewMenu, helpMenu}
 	mainMenu := fyne.NewMainMenu(menuItems...)
 	w.SetMainMenu(mainMenu)
-	minSizePlaceholder := canvas.NewImageFromImage(image.NewNRGBA(image.Rect(0, 0, 0, 0)))
+	minSizePlaceholder := canvas.NewRectangle(color.Transparent)
 	minSizePlaceholder.SetMinSize(fyne.NewSize(400, 300))
 
 	content := container.NewBorder(nil, status, nil, nil, editor)
