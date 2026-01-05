@@ -21,7 +21,10 @@ func main() {
 
 	//create status bar
 	status := widget.NewLabel("Ln 1, Col 1")
-
+	appMenu := fyne.NewMenu("",
+		fyne.NewMenuItem("About notepadxp", func() {}),
+		fyne.NewMenuItem("Preferences…", func() {}),
+		fyne.NewMenuItem("Quit", a.Quit))
 	fileMenu := fyne.NewMenu("File",
 		fyne.NewMenuItem("New", func() {}),
 		fyne.NewMenuItem("Open…", func() {}),
@@ -53,7 +56,7 @@ func main() {
 
 	helpMenu := fyne.NewMenu("Help",
 		fyne.NewMenuItem("TextEditor Help", func() {}))
-	menuItems := []*fyne.Menu{fileMenu, editMenu, formatMenu, viewMenu, helpMenu}
+	menuItems := []*fyne.Menu{appMenu, fileMenu, editMenu, formatMenu, viewMenu, helpMenu}
 	mainMenu := fyne.NewMainMenu(menuItems...)
 	w.SetMainMenu(mainMenu)
 	minSizePlaceholder := canvas.NewImageFromImage(image.NewNRGBA(image.Rect(0, 0, 0, 0)))
